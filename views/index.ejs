@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>MealDB API</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <h1 style="color: #0A400C;"><%= mealName %></h1>
+    <div class="flex-container">
+        <div class="image-container">
+            <img src="<%= mealImage %>" alt="<%= mealName %>" style="max-width:300px;" />
+            <div class="small-container">
+                <p><strong>Category:</strong> <%= category %> | <strong>Origin:</strong> <%= area %></p>
+                <!-- Youtube Link -->
+                <% if (youtubeLink) { %>
+                <p><strong>Watch on YouTube:</strong><a href="<%= youtubeLink %>" target="_blank" style="color: #0A400C;"><i class="fab fa-youtube" style="font-size: 32px; color: red; margin: 10px;"></i></a></p>
+                <% } else { %>
+                <p><strong>Watch on YouTube:</strong> Not available</p>
+                <% } %>
+            </div>
+        </div>
+    
+        <div class="content">
+            <h2>Ingredients</h2>
+            <ul>
+                <% ingredients.forEach(ingredient => { %>
+                <li><%= ingredient %></li>
+                <% }); %>
+            </ul>
+
+            <h2>Instructions</h2>
+            <p><%= instructions %></p>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
